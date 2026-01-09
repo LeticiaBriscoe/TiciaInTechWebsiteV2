@@ -206,7 +206,9 @@
             object-fit: cover;
             aspect-ratio: 3/4;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-            border: 3px solid var(--magenta);
+            border: 3px solid transparent;
+            background: linear-gradient(var(--dark-bg), var(--dark-bg)) padding-box,
+                        var(--gradient-brand) border-box;
         }
 
         .hero-image::before {
@@ -280,6 +282,22 @@
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
             font-size: 1.05rem;
+        }
+
+        .credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .credential {
+            background: var(--dark-card);
+            padding: 0.75rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .services-grid {
@@ -399,85 +417,85 @@
             padding: 0.4rem 0.8rem;
             border-radius: 20px;
             font-size: 0.8rem;
-        }
-
-        #contact {
-            text-align: center;
+            font-weight: 500;
         }
 
         .contact-content {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
+            text-align: center;
         }
 
         .contact-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
+            margin-top: 2rem;
         }
 
         .contact-link {
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            padding: 1.25rem 2rem;
+            padding: 1rem 2rem;
             background: var(--dark-card);
-            border-radius: 15px;
+            border-radius: 50px;
             text-decoration: none;
             color: var(--text-primary);
             font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .contact-link:hover {
-            transform: translateY(-3px);
             border-color: var(--magenta);
-            box-shadow: 0 10px 30px rgba(233, 30, 140, 0.2);
+            transform: translateY(-2px);
         }
 
-        .contact-link svg {
-            width: 24px; height: 24px;
-            fill: var(--magenta);
-        }
+        .contact-link svg { width: 20px; height: 20px; }
 
         footer {
-            text-align: center;
             padding: 3rem 2rem;
-            background: var(--dark-surface);
+            text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 1;
         }
-
-        footer .logo { height: 40px; margin-bottom: 1rem; }
 
         footer p {
             color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
-        @media (max-width: 768px) {
+        footer .logo {
+            height: 40px;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 968px) {
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-            .hero-text .subtitle { margin: 0 auto 2.5rem; }
+            .hero-text .subtitle { margin-left: auto; margin-right: auto; }
             .hero-buttons { justify-content: center; }
             .hero-image { order: -1; }
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .about-image { max-width: 300px; margin: 0 auto; }
+            .hero-image img { max-width: 320px; }
+            .about-content { grid-template-columns: 1fr; text-align: center; }
+            .about-image { max-width: 280px; margin: 0 auto; }
+        }
+
+        @media (max-width: 768px) {
             .nav-links {
                 display: none;
                 position: absolute;
                 top: 100%; left: 0; right: 0;
-                background: rgba(10, 10, 15, 0.98);
                 flex-direction: column;
+                background: var(--dark-surface);
                 padding: 2rem;
                 gap: 1.5rem;
-                text-align: center;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             }
             .nav-links.active { display: flex; }
             .mobile-menu { display: flex; }
@@ -519,7 +537,7 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="animate">Hi, I'm <span>Leticia</span></h1>
+                <h1 class="animate">Hi, I'm <span>Ticia</span></h1>
                 <p class="tagline animate delay-1">Innovation Made Simple</p>
                 <p class="subtitle animate delay-2">Digital transformation consultant specialising in DevOps, live streaming infrastructure, AV systems design, and IT advisory services. Helping organisations harness technology to achieve their goals.</p>
                 <div class="hero-buttons animate delay-3">
@@ -528,7 +546,7 @@
                 </div>
             </div>
             <div class="hero-image animate delay-2">
-                <img src="images/headshot-main.jpg" alt="Leticia - Digital Transformation Consultant">
+                <img src="images/headshot-main.jpg" alt="Ticia - Digital Transformation Consultant">
             </div>
         </div>
     </section>
@@ -540,13 +558,18 @@
         </div>
         <div class="about-content">
             <div class="about-image">
-                <img src="images/headshot-about.jpg" alt="Leticia">
+                <img src="images/headshot-about.jpg" alt="Ticia">
             </div>
             <div class="about-text">
                 <h3>Turning Complex Tech into Simple Solutions</h3>
                 <p>With over 8 years of experience in IT and digital transformation, I specialise in making technology work for people, not the other way around. From designing live streaming infrastructure for community organisations to advising on IT strategy for educational institutions, I bring a practical, results-focused approach to every project.</p>
                 <p>My background spans DevOps engineering, business systems analysis, Power Platform development, and comprehensive IT infrastructure management. I'm particularly passionate about helping organisations that are often underserved by traditional tech consultancies.</p>
-                <p>I hold a BSc (Honours) in Digital and Technology Solutions from The Open University.</p>
+                <p>Currently completing my BSc (Honours) in Digital and Technology Solutions from The Open University, graduating September 2026.</p>
+                <div class="credentials">
+                    <span class="credential">🎓 BSc Digital &amp; Technology Solutions</span>
+                    <span class="credential">💻 DevOps &amp; Platform Engineering</span>
+                    <span class="credential">📍 London, UK</span>
+                </div>
             </div>
         </div>
     </section>
@@ -628,7 +651,7 @@
             <div class="portfolio-card">
                 <div class="portfolio-header">
                     <h3>Brand Identity Restoration</h3>
-                    <span class="client">PCMC International</span>
+                    <span class="client">Heritage Organisation</span>
                 </div>
                 <div class="portfolio-body">
                     <p>Painstakingly restored a 75-year-old logo from archival materials using Inkscape, converting degraded print materials into clean SVG vectors. The restored logo now appears on physical signage, fabric prints, and digital materials.</p>
@@ -642,7 +665,7 @@
             <div class="portfolio-card">
                 <div class="portfolio-header">
                     <h3>Digital Presence Setup</h3>
-                    <span class="client">PCMC Wandsworth</span>
+                    <span class="client">Community Organisation</span>
                 </div>
                 <div class="portfolio-body">
                     <p>Complete digital infrastructure including WordPress website development, YouTube brand channel creation with managed access, podcast production on Buzzsprout, and ongoing technical support.</p>
@@ -670,7 +693,7 @@
             <div class="portfolio-card">
                 <div class="portfolio-header">
                     <h3>Education Sector IT Consultancy</h3>
-                    <span class="client">School Business Leaders (ABBLed)</span>
+                    <span class="client">School Business Leaders</span>
                 </div>
                 <div class="portfolio-body">
                     <p>Advisory services covering IT strategy, third-party and contractor management, hardware refresh programmes, and software contract negotiations. Webinar hosting and professional facilitation.</p>
@@ -696,7 +719,7 @@
                     <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                     Email Me
                 </a>
-                <a href="https://www.linkedin.com/in/leticia-briscoe-bsc-hons-mbcs-217190125/" class="contact-link" target="_blank" rel="noopener">
+                <a href="https://linkedin.com/in/ticiaintech" class="contact-link" target="_blank" rel="noopener">
                     <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
                     LinkedIn
                 </a>
@@ -733,7 +756,7 @@
         document.querySelectorAll('.service-card, .portfolio-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.6s ease';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             observer.observe(el);
         });
     </script>
