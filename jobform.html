@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit a Job | Ticia in Tech</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --magenta: #E91E8C;
+      --yellow: #FFE500;
+      --purple: #9B4DCA;
+      --dark-bg: #0a0a0f;
+      --dark-card: #1a1a25;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0b0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      padding: 2rem;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, var(--magenta), var(--purple), var(--yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    form {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    label {
+      font-weight: 600;
+      color: var(--text-secondary);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 10px;
+      background: var(--dark-card);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--magenta);
+      outline: none;
+    }
+
+    button {
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      background: linear-gradient(135deg, var(--magenta), var(--purple), var(--yellow));
+      color: var(--dark-bg);
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Submit a Job</h1>
+
+<form action="https://formspree.io/f/xgogznyq" method="POST" enctype="multipart/form-data">
+  <input type="hidden" name="_redirect" value="https://ticiaintech.com">
+
+
+    <label>Full Name</label>
+    <input type="text" name="full_name" required>
+
+    <label>Email Address</label>
+    <input type="email" name="email" required>
+
+    <label>Due Date</label>
+    <input type="date" name="due_date" required>
+
+    <label>Is this a repeat job?</label>
+    <select name="repeat_job" required>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+
+    <label>Previous Job Reference</label>
+    <input type="text" name="previous_reference">
+
+    <label>Upload Files (up to 5)</label>
+    <input type="file" name="files" multiple required>
+
+    <label>Additional Information</label>
+    <textarea name="additional_info" rows="5"></textarea>
+
+    <button type="submit">Submit Job</button>
+
+  </form>
+
+</body>
+</html>
