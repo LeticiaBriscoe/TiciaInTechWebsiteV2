@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticia in Tech | Innovation Made Simple</title>
-    <meta name="description" content="Digital transformation consultant specialising in DevOps, live streaming infrastructure, and IT advisory services. Based in London.">
+    <meta name="description" content="Digital transformation consultant specialising in DevOps, live streaming infrastructure, AV systems design, and IT advisory services. Based in London.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -171,6 +171,9 @@
             cursor: pointer;
             border: none;
             font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn-primary {
@@ -201,13 +204,13 @@
         }
 
         .hero-image img {
-        width: 100%;
-        max-width: 420px;
-        border-radius: 20px;
-        object-fit: cover;
-        aspect-ratio: 3/4;
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-        border: 3px solid var(--magenta);
+            width: 100%;
+            max-width: 420px;
+            border-radius: 20px;
+            object-fit: cover;
+            aspect-ratio: 3/4;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            border: 3px solid var(--magenta);
         }
 
         .hero-image::before {
@@ -522,12 +525,12 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1 class="animate">Hi, I'm <span>Leticia</span></h1>
-                <!--<p class="tagline animate delay-1">Innovation Made Simple</p>-->
                 <p class="subtitle animate delay-2">Digital transformation consultant specialising in DevOps, live streaming infrastructure, AV systems design, and IT advisory services. Helping organisations harness technology to achieve their goals.</p>
                 <div class="hero-buttons animate delay-3">
                     <a href="#contact" class="btn btn-primary">Get in Touch</a>
-                    <a href="jobform.html" class="btn btn-primary">Submit a Job</a>
                     <a href="#portfolio" class="btn btn-secondary">View My Work</a>
+                    <a href="jobform.html" class="btn btn-primary">Submit a Job</a>
+                    <a href="YOUR_ONEDRIVE_REQUEST_FILES_LINK_HERE" class="btn btn-secondary" target="_blank" rel="noopener">Upload Files</a>
                 </div>
             </div>
             <div class="hero-image animate delay-2">
@@ -547,7 +550,7 @@
             </div>
             <div class="about-text">
                 <h3>Turning Complex Tech into Simple Solutions</h3>
-                <p>With over 8 years of experience in IT and digital transformation, I specialise in making technology work for people, not the other way around. From designing live streaming infrastructure for community organisations to advising on IT strategy for educational institutions, I bring a practical, results-focused approach to every project.</p>
+                <p>With over 10 years of experience in IT and digital transformation, I specialise in making technology work for people, not the other way around. From designing live streaming infrastructure for community organisations to advising on IT strategy for educational institutions, I bring a practical, results-focused approach to every project.</p>
                 <p>My background spans DevOps engineering, business systems analysis, Power Platform development, and comprehensive IT infrastructure management. I'm particularly passionate about helping organisations that are often underserved by traditional tech consultancies.</p>
                 <p>I hold a BSc (Honours) in Digital and Technology Solutions, specialising in Software Engineering from The Open University.</p>
             </div>
@@ -680,7 +683,7 @@
                     <div class="portfolio-tags">
                         <span class="portfolio-tag">Education</span>
                         <span class="portfolio-tag">IT Strategy</span>
-                        <span class="portfolio-tag">Procurement</span>
+                        <span class="processor-tag">Procurement</span>
                     </div>
                 </div>
             </div>
@@ -708,11 +711,10 @@
     </section>
 
     <section style="background: var(--dark-card); text-align:center; padding:1.5rem; border-top:1px solid rgba(255,255,255,0.05);">
-    <p style="color: var(--text-secondary); font-size:1rem;">
-        ⭐ Limited Free IT Consultancy for Non‑Profits and Small Businesses (subject to availability)
-    </p>
-</section>
-
+        <p style="color: var(--text-secondary); font-size:1rem;">
+            ⭐ Limited Free IT Consultancy for Non‑Profits and Small Businesses (subject to availability)
+        </p>
+    </section>
 
     <footer>
         <a href="https://ticiaintech.com/#"><img src="images/logo-white.png" alt="Ticia in Tech" class="logo"></a>
@@ -730,7 +732,6 @@
             });
         });
 
-        // Intersection Observer for scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
