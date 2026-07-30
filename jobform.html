@@ -16,7 +16,6 @@
             --purple: #9B4DCA;
             --dark-bg: #0a0a0f;
             --dark-surface: #12121a;
-            --dark-card: #1a1a25;
             --text-primary: #ffffff;
             --text-secondary: #a0a0b0;
             --gradient-brand: linear-gradient(135deg, var(--magenta) 0%, var(--purple) 50%, var(--yellow) 100%);
@@ -80,40 +79,15 @@
             font-weight: 500;
             font-size: 0.95rem;
             transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px; left: 0;
-            width: 0; height: 2px;
-            background: var(--gradient-brand);
-            transition: width 0.3s ease;
         }
 
         .nav-links a:hover { color: var(--text-primary); }
-        .nav-links a:hover::after { width: 100%; }
-
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .mobile-menu span {
-            width: 25px; height: 2px;
-            background: var(--text-primary);
-            transition: 0.3s;
-        }
 
         .form-container {
-            max-width: 700px;
+            max-width: 750px;
             width: 100%;
             margin: 9rem auto 4rem;
-            padding: 3rem;
+            padding: 2.5rem;
             background: var(--dark-surface);
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -124,7 +98,7 @@
 
         .form-header {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .form-header h1 {
@@ -141,74 +115,52 @@
             color: var(--text-secondary);
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        .iframe-container {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #ffffff;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        label {
+        .iframe-container iframe {
+            width: 100%;
+            /* Increased height to fit all questions and branching fields comfortably */
+            height: 1150px; 
+            border: none;
+            display: block;
+        }
+
+        .upload-section {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .upload-section label {
             display: block;
             font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 0.3rem;
-            font-size: 0.95rem;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 0.9rem 1rem;
-            margin-bottom: 0.5rem;
-            border-radius: 10px;
-            background: var(--dark-card);
-            border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-primary);
-            font-size: 1rem;
-            font-family: inherit;
-            transition: all 0.3s ease;
+            margin-bottom: 0.75rem;
         }
 
-        input:focus, select:focus, textarea:focus {
-            border-color: var(--magenta);
-            outline: none;
-            box-shadow: 0 0 10px rgba(233, 30, 140, 0.2);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
+        .btn-secondary-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.9rem 2rem;
             border-radius: 50px;
             font-weight: 600;
             font-size: 1rem;
             text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-family: inherit;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-primary {
-            background: var(--gradient-brand);
-            color: var(--dark-bg);
-            width: 100%;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(233, 30, 140, 0.3);
-        }
-
-        .btn-secondary-action {
             background: transparent;
             color: var(--text-primary);
             border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
             width: 100%;
-            text-align: center;
         }
 
         .btn-secondary-action:hover {
@@ -231,18 +183,7 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%; left: 0; right: 0;
-                background: rgba(10, 10, 15, 0.98);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1.5rem;
-                text-align: center;
-            }
-            .nav-links.active { display: flex; }
-            .mobile-menu { display: flex; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
@@ -259,79 +200,27 @@
                 <li><a href="index.html#contact">Contact</a></li>
                 <li><a href="volunteer.html">Volunteer</a></li>
             </ul>
-            <div class="mobile-menu" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
 
     <div class="form-container">
         <div class="form-header">
             <h1>Submit a Job</h1>
-            <p>Provide your details and upload relevant files below.</p>
+            <p>Fill out your request details and upload project files below.</p>
         </div>
-
-        <form action="https://formspree.io/f/xgogznyq" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="_redirect" value="https://ticiaintech.com">
-
-            <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" name="full_name" required>
-            </div>
-
-            <div class="form-group">
-                <label>Email Address</label>
-                <input type="email" name="email" required>
-            </div>
-
-            <div class="form-group">
-                <label>Due Date</label>
-                <input type="date" name="due_date" required>
-            </div>
-
-            <div class="form-group">
-                <label>Is this a repeat job?</label>
-                <select name="repeat_job" required>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Previous Job Reference</label>
-                <input type="text" name="previous_reference">
-            </div>
-
-            <div class="form-group">
-                <label>Upload Files</label>
-                <a href="https://ticiantech-my.sharepoint.com/:f:/g/personal/leticia_ticiaintech_com/IgDDMQ2UzSsqQrgviDmpdCTcAYCCcH0FpSnHKvMEbdvxGMU" class="btn btn-secondary-action" target="_blank" rel="noopener">Upload Files</a>
-            </div>
-
-            <div class="form-group">
-                <label>Additional Information</label>
-                <textarea name="additional_info" rows="5"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit Job</button>
-        </form>
+<!-- Embedded Microsoft Form -->
+        <div class="iframe-container">
+            <iframe src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=M_FTaXgp9U6vGqvBdnVp90KhPDeY4YpArvSmpG2wwe9UODNFS1hXRFVER0ZTQlFPVzkwMVQ3Mk83Ni4u&embed=true" title="Job Submission Form"></iframe>
+        </div>
+        <!-- Separate OneDrive File Upload Section -->
+        <div class="upload-section">
+            <label>Have project files to share?</label>
+            <a href="https://ticiantech-my.sharepoint.com/:f:/g/personal/leticia_ticiaintech_com/IgDDMQ2UzSsqQrgviDmpdCTcAYCCcH0FpSnHKvMEbdvxGMU" class="btn-secondary-action" target="_blank" rel="noopener">Upload Files via OneDrive</a>
+        </div>
     </div>
 
     <footer>
         <p>&copy; 2025 Ticia in Tech. Innovation Made Simple.</p>
     </footer>
-
-    <script>
-        function toggleMenu() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        }
-
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.querySelector('.nav-links').classList.remove('active');
-            });
-        });
-    </script>
 </body>
 </html>
